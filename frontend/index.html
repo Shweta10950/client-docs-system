@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whitecircle Organization</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-blue-800 p-4 text-white shadow-md flex justify-between items-center">
+    <div class="text-xl font-bold">Whitecircle Organization</div>
+    <ul class="flex gap-6 text-sm">
+      <li><a href="index.html" class="hover:underline">Home</a></li>
+      <li><a href="login.html" class="hover:underline">Login</a></li>
+       <a href="register.html" class="hover:underline">Register</a>
+      <li><a href="dashboard.html" class="hover:underline">Client Panel</a></li>
+      <li><a href="admin.html" class="hover:underline">Admin Panel</a></li>
+    </ul>
+  </nav>
+
+  <header class="bg-white p-10 text-center shadow-sm">
+    <h1 class="text-3xl font-semibold mb-4">Welcome to Whitecircle Document Management System</h1>
+    <p class="text-gray-600 text-lg">This platform allows secure document uploads and automated deadline notifications for clients and admins.</p>
+  </header>
+
+  <section class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="bg-white rounded-2xl shadow p-6 text-center">
+      <i class="fa-solid fa-user-shield text-4xl text-blue-600 mb-3"></i>
+      <h3 class="font-semibold text-lg">Authentication</h3>
+      <p class="text-sm text-gray-600">Client and Admin login with secure JWT-based authentication.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow p-6 text-center">
+      <i class="fa-solid fa-cloud-upload-alt text-4xl text-green-600 mb-3"></i>
+      <h3 class="font-semibold text-lg">Document Upload</h3>
+      <p class="text-sm text-gray-600">Upload PDFs, Word docs, and Images with metadata and expiry date.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow p-6 text-center">
+      <i class="fa-solid fa-table text-4xl text-purple-600 mb-3"></i>
+      <h3 class="font-semibold text-lg">Client Panel</h3>
+      <p class="text-sm text-gray-600">View, edit, and delete uploaded documents. Get notified before deadlines.</p>
+    </div>
+    <div class="bg-white rounded-2xl shadow p-6 text-center">
+      <i class="fa-solid fa-user-gear text-4xl text-red-600 mb-3"></i>
+      <h3 class="font-semibold text-lg">Admin Panel</h3>
+      <p class="text-sm text-gray-600">Monitor all clients, filter data, and send reminders manually or automatically.</p>
+    </div>
+  </section>
+
+  <footer class="bg-blue-900 text-white text-center py-6 mt-10">
+    <p>&copy; 2025 Whitecircle Organization. All rights reserved.</p>
+  </footer>
+</body>
+</html>

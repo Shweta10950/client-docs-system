@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Whitecircle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-blue-800 mb-6">Create an Account</h2>
+    
+    <form id="registerForm" class="space-y-4">
+      <div>
+        <label for="email" class="block text-gray-700">Email</label>
+        <input type="email" id="email" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-400" />
+      </div>
+      <div>
+        <label for="password" class="block text-gray-700">Password</label>
+        <input type="password" id="password" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-400" />
+      </div>
+      <div>
+        <label for="confirmPassword" class="block text-gray-700">Confirm Password</label>
+        <input type="password" id="confirmPassword" required class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-400" />
+        <p id="mismatch" class="text-sm text-red-600 mt-1 hidden">Passwords do not match.</p>
+      </div>
+      <div>
+        <label for="role" class="block text-gray-700">Register as:</label>
+        <select id="role" class="w-full px-4 py-2 border rounded-md">
+          <option value="client">Client</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">Register</button>
+    </form>
+
+    <p id="error" class="text-center text-red-600 text-sm mt-4 hidden">Something went wrong. Try again.</p>
+    <p class="text-center text-sm mt-4">Already have an account? <a href="login.html" class="text-blue-600 hover:underline">Login</a></p>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const role = document.getElementById('role').value;
+
+      if (password !== confirmPassword) {
+        document.getElementById('mismatch').classList.remove('hidden');
+        return;
+      } else {
+        document.getElementById('mismatch').classList.add('hidden');
+      }
+
+      try {
+        const res = await fetch('http://localhost:5000/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, role })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('role', role);
+          window.location.href = role === 'admin' ? 'admin.html' : 'dashboard.html';
+        } else {
+          document.getElementById('error').classList.remove('hidden');
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('error').classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
